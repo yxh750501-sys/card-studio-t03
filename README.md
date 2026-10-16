@@ -17,4 +17,4 @@
 
 ## 점검
 
-`node tests.mjs`로 극단 입력 12건과 이모지 줄바꿈 회귀 검사를 실행했습니다. 상세 기록은 `evidence/extreme-inputs.md`에 있습니다. 코드 문법, PNG 3개의 크기·파일 열기·EXIF 항목 부재, 정적 서버의 HTML/PNG 응답을 검사했습니다. 실제 브라우저의 업로드·템플릿 새로고침·세 비율 화면/파일 대조는 공개 배포 뒤 직접 확인해야 합니다.
+`node tests.mjs`로 극단 입력 12건과 이모지 줄바꿈 회귀 검사를 실행했습니다. 상세 기록은 `evidence/extreme-inputs.md`에 있습니다. 코드 문법, PNG 3개의 크기·파일 열기·EXIF 항목 부재, 정적 서버의 HTML/PNG 응답을 검사했습니다. Chromium 브라우저에서 업로드·템플릿 CRUD와 새로고침·JSON 복원·세 비율 화면/파일 대조도 확인했습니다. 실행 내용은 `evidence/browser-qa.md`에 있습니다.
