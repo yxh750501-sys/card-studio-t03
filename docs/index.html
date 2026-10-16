@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="이미지와 한글 문구를 조합해 카드 이미지를 만들고 PNG로 저장하는 공개 편집기">
+  <title>짤·카드 스튜디오</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar"><div class="brand"><span class="brand-mark">▧</span><div><strong>짤·카드 스튜디오</strong><small>MAKE IT YOURS · T03</small></div></div><span class="top-note">이미지 + 한 줄의 생각 = 나만의 카드</span><a class="help-link" href="#guide">사용 방법 ↗</a></header>
+    <main class="workspace">
+      <aside class="panel controls-panel">
+        <div class="panel-heading"><span class="step">01</span><div><h2>콘텐츠 편집</h2><p>입력 즉시 미리보기에 반영됩니다.</p></div></div>
+        <section class="field-section"><label class="field-title" for="image-input">배경 이미지 <span>PNG · JPEG</span></label><label class="upload-box" for="image-input"><span class="upload-icon">↥</span><strong>이미지를 선택하세요</strong><small>직접 만든 이미지나 사용 허가된 이미지 · 최대 8 MB</small></label><input id="image-input" type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg"><div class="image-meta"><span id="image-name">기본 배경 사용 중</span><button id="remove-image" type="button" class="ghost-small">기본 배경</button></div></section>
+        <section class="field-section"><label class="field-title" for="caption">카드 문구 <span id="char-count">0 / 500</span></label><textarea id="caption" maxlength="500" rows="4" placeholder="여기에 문구를 입력하세요">오늘의 작은 순간을 크게.</textarea><div class="field-grid"><label>가로 위치 <output id="x-value">50%</output><input id="pos-x" type="range" min="8" max="92" value="50"></label><label>세로 위치 <output id="y-value">78%</output><input id="pos-y" type="range" min="8" max="92" value="78"></label></div><div class="field-grid"><label>글자 크기 <output id="size-value">72px</output><input id="font-size" type="range" min="24" max="144" value="72"></label><label>글자 색 <input id="text-color" type="color" value="#ffffff"></label></div><label class="select-label">정렬<select id="align"><option value="center">가운데</option><option value="left">왼쪽</option><option value="right">오른쪽</option></select></label></section>
+        <section class="field-section"><span class="field-title">화면 비율</span><div class="ratio-group" role="group" aria-label="화면 비율"><button type="button" data-ratio="square" class="selected" aria-pressed="true">1:1 <small>정사각</small></button><button type="button" data-ratio="portrait" aria-pressed="false">4:5 <small>피드</small></button><button type="button" data-ratio="story" aria-pressed="false">9:16 <small>스토리</small></button></div></section>
+      </aside>
+      <section class="stage" aria-label="카드 미리보기"><div class="stage-top"><div><span class="eyebrow">LIVE PREVIEW</span><h1>당신의 카드, 바로 여기.</h1></div><span id="dimensions" class="dimensions">1080 × 1080</span></div><div class="canvas-wrap"><canvas id="preview" width="1080" height="1080" aria-label="완성 카드 미리보기"></canvas></div><div class="stage-bottom"><span id="preview-message">미리보기와 내려받는 PNG는 같은 캔버스를 사용합니다.</span><button id="download" class="primary" type="button">PNG 내려받기 <span>↗</span></button></div><div id="message" class="message" role="status" aria-live="polite"></div></section>
+      <aside class="panel library-panel"><div class="panel-heading"><span class="step">02</span><div><h2>내 템플릿</h2><p>브라우저에 저장하고 다시 사용하세요.</p></div></div><label class="field-title" for="template-name">템플릿 이름</label><input id="template-name" type="text" maxlength="60" placeholder="예: 주말 카드"><button id="save-template" class="secondary" type="button">새 템플릿 저장</button><div id="template-list" class="template-list" aria-label="저장한 템플릿"></div><div class="library-actions"><button id="export-json" type="button">JSON 내보내기</button><label for="import-json">JSON 가져오기<input id="import-json" type="file" accept="application/json,.json"></label></div><p class="muted">가져오기 전에 모든 항목을 검사합니다. 정상 파일이면 현재 목록을 교체합니다. 잘못된 파일은 기존 목록을 유지합니다.</p></aside>
+    </main>
+    <section class="bottom-grid" id="guide"><div><span class="eyebrow">HOW TO USE</span><h2>3단계로 완성하세요.</h2><ol><li>이미지를 불러오고 문구를 적습니다.</li><li>위치·크기·색·비율을 보면서 조정합니다.</li><li>PNG를 내려받거나 템플릿으로 저장합니다.</li></ol></div><div><span class="eyebrow">SAFE BY DESIGN</span><h2>내 이미지, 내 브라우저.</h2><p>이미지는 이 브라우저에서 다시 그려 메타데이터를 제거합니다. 저장한 템플릿은 이 브라우저의 로컬 저장소에만 남습니다. 타인의 이미지·개인정보·비밀값은 공개 카드에 넣지 마세요.</p></div></section>
+    <section class="examples"><div class="examples-heading"><div><span class="eyebrow">FINISHED CARDS</span><h2>완성 이미지 3개</h2></div><p>도형과 문구로 직접 만든 예시입니다. 이미지를 눌러 원본 PNG를 열 수 있습니다.</p></div><div class="example-grid"><a href="./examples/01-square.png" target="_blank" rel="noopener"><img src="./examples/01-square.png" alt="정사각 카드: 오늘의 작은 승리"><strong>01 · 오늘의 작은 승리</strong><span>1:1 · 1080 × 1080</span></a><a href="./examples/02-portrait.png" target="_blank" rel="noopener"><img src="./examples/02-portrait.png" alt="세로 카드: 주말의 온도"><strong>02 · 주말의 온도</strong><span>4:5 · 1080 × 1350</span></a><a href="./examples/03-story.png" target="_blank" rel="noopener"><img src="./examples/03-story.png" alt="스토리 카드: 계속, 나답게"><strong>03 · 계속, 나답게</strong><span>9:16 · 1080 × 1920</span></a></div></section>
+    <footer>짤·카드 스튜디오 · 로그인 없이 사용 · 원본 이미지 서버 업로드 없음</footer>
+  </div>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>
