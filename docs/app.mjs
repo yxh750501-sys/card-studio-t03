@@ -201,6 +201,8 @@ $('import-json').addEventListener('change', async event => {
   const file = event.target.files?.[0];
   event.target.value = '';
   if (!file) return;
+  event.target.disabled = true;
+  announce('JSON 파일을 검사하고 있습니다.');
   try {
     if (file.size > MAX_JSON_BYTES || file.size === 0) throw Error('JSON 파일은 30 MB 이하여야 합니다.');
     let parsed;
@@ -217,6 +219,7 @@ $('import-json').addEventListener('change', async event => {
     await refreshTemplates();
     announce(`${cleaned.length}개 템플릿을 복원했습니다. 이전 목록은 교체되었습니다.`);
   } catch (error) { announce(`JSON 가져오기 거부: ${error.message} 기존 템플릿은 유지됩니다.`, true); }
+  finally { event.target.disabled = false; }
 });
 
 syncControls();
